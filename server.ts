@@ -4,19 +4,19 @@ const http = require('http')
 const cors =require('cors')
 
 const app=express()
-app.use(
-    cors({
-      origin: "*",
-    })
-  );
+// app.use(
+//     cors({
+//       origin: "*",
+//     })
+//   );
 const server=http.createServer(app)
 
 import {Server} from 'socket.io'
 
 const io= new Server(server,{
     cors:{
-        origin:"*",
-        methods:['POST','GET']
+        origin: ["http://localhost:3000", "https://testproduction-lilq.vercel.app"],
+        methods: ['POST', 'GET'],
     },
 })
 const clients:string[]=[]
