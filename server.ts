@@ -24,6 +24,6 @@ io.on('connection',async(socket)=>{
     })
 })
 // io.emit("hello")
-server.listen(5000,()=>{
-    console.log("nodemon at port 5000");
+server.listen(3000,()=>{
+    console.log("nodemon at port 3000");
 })
