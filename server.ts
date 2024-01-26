@@ -4,18 +4,13 @@ const http = require('http')
 const cors require('cors')
 
 const app=express()
-app.use(
-    cors({
-        origin:'*',  
-    })
-)
 const server=http.createServer(app)
 
 import {Server} from 'socket.io'
 
 const io= new Server(server,{
     cors:{
-        origin:'*',
+        origin:"*",
         methods:['POST','GET']
     },
 })
