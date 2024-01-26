@@ -4,6 +4,11 @@ const http = require('http')
 const cors require('cors')
 
 const app=express()
+app.use(
+    cors({
+      origin: "*",
+    })
+  );
 const server=http.createServer(app)
 
 import {Server} from 'socket.io'
@@ -16,7 +21,7 @@ const io= new Server(server,{
 })
 const clients:string[]=[]
 console.log("server live")
-io.on('connection',async(socket)=>{
+io.of("/api/socket").on('connection',async(socket)=>{
     console.log(socket.id)
     clients.push(socket.id)
     socket.on('send-msg',(msg:string)=>{
