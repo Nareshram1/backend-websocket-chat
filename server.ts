@@ -26,8 +26,6 @@ io.on('connection',async(socket)=>{
 // io.emit("hello")
 server.listen(3000,()=>{
     console.log("nodemon at port 3000");
-<<<<<<< HEAD
+
 })
-=======
-})
->>>>>>> b574828331da6937385723cf6b7f812302e02303
+
