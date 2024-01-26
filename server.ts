@@ -21,7 +21,7 @@ const io= new Server(server,{
 })
 const clients:string[]=[]
 console.log("server live")
-io.of("/api/socket").on('connection',async(socket)=>{
+io.on('connection',async(socket)=>{
     console.log(socket.id)
     clients.push(socket.id)
     socket.on('send-msg',(msg:string)=>{
