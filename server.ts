@@ -15,6 +15,7 @@ const io= new Server(server,{
     },
 })
 const clients:string[]=[]
+console.log("server live")
 io.on('connection',async(socket)=>{
     console.log(socket.id)
     clients.push(socket.id)
