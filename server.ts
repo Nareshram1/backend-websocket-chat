@@ -15,7 +15,7 @@ import {Server} from 'socket.io'
 
 const io= new Server(server,{
     cors:{
-        origin: ["http://localhost:3000", "https://testproduction-lilq.vercel.app"],
+        origin: "*",
         methods: ['POST', 'GET'],
     },
 })
