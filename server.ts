@@ -18,19 +18,20 @@ const io= new Server(server,{
 console.log("server live")
 io.on('connection',async(socket)=>{
     console.log(socket.id)
+    // inital call
+    socket.emit('connected', io.engine.clientsCount);
+    // when a client connects ,send the number of connected users to all clients
     socket.on('send-msg',(msg:string)=>{
         socket.broadcast.emit('rec-msg',msg,io.engine.clientsCount)
     })
-
+    //  disconnect 
     socket.on("disconnect",()=>{
         console.log(`User disconnected: ${socket.id}`);
-        // Broadcast when a user disconnects
-        // io.emit('rec-msg', `${socket.id} has left the chat.`, io.engine.clientsCount);
     })
 })
-// io.emit("hello")
+
 server.listen(5000,()=>{
-    console.log("nodemon at port 3000");
+    console.log("nodemon at port 5000");
 
 })
 
