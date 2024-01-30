@@ -14,18 +14,22 @@ const io= new Server(server,{
         methods: ['POST', 'GET'],
     },
 })
-const clients:string[]=[]
+// const clients:string[]=[]
 console.log("server live")
 io.on('connection',async(socket)=>{
     console.log(socket.id)
-    clients.push(socket.id)
     socket.on('send-msg',(msg:string)=>{
-        console.log(msg)
-        socket.broadcast.emit('rec-msg',msg,clients.length)
+        socket.broadcast.emit('rec-msg',msg,io.engine.clientsCount)
+    })
+
+    socket.on("disconnect",()=>{
+        console.log(`User disconnected: ${socket.id}`);
+        // Broadcast when a user disconnects
+        // io.emit('rec-msg', `${socket.id} has left the chat.`, io.engine.clientsCount);
     })
 })
 // io.emit("hello")
-server.listen(3000,()=>{
+server.listen(5000,()=>{
     console.log("nodemon at port 3000");
 
 })
